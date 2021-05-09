@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274c02963f889a64e90bc2e596e21d13, type: 3}
   m_Name: HTCViveControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: HTC Vive Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.htcvive
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Touch Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.oculustouch
@@ -152,7 +152,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
   m_Name: Standalone
   m_EditorClassIdentifier: 
-  features: []
+  features:
+  - {fileID: -1480919932877657528}
+  - {fileID: -2847344075249685223}
+  - {fileID: -8987998391405683356}
+  - {fileID: 5547882229028522852}
+  - {fileID: -4071329120082732028}
+  - {fileID: -6987603534228084664}
+  - {fileID: 6276114039690082170}
+  - {fileID: 4279203988246693594}
+  - {fileID: -2997014529770471576}
+  - {fileID: 5445511099206622342}
+  - {fileID: -6119961543635453869}
   m_renderMode: 1
   m_depthSubmissionMode: 0
 --- !u!114 &11400000
