@@ -14,7 +14,7 @@ public class ButtonController : MonoBehaviour
     private Material lightMaterial;
     private int level = 1;
     private int inpIdx = 0;
-    private int[] solution = new int[6];
+    private int[] solution = new int[12];
     private int[] input;
     private bool finished = false;
 
@@ -124,6 +124,7 @@ public class ButtonController : MonoBehaviour
 
     private void SetColor(Color color){
         lightMaterial.color = color;
+        lightMaterial.SetVector("_EmissionColor", color * 1.1f);
     }
 
     private Color lookUpColor(int colIdx){

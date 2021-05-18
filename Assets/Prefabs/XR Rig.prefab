@@ -187,14 +187,14 @@ MonoBehaviour:
       m_Calls: []
   m_SelectActionTrigger: 0
   m_HideControllerOnSelect: 1
-  m_PlayAudioClipOnSelectEntered: 0
-  m_AudioClipForOnSelectEntered: {fileID: 0}
+  m_PlayAudioClipOnSelectEntered: 1
+  m_AudioClipForOnSelectEntered: {fileID: 8300000, guid: 307407dfb8eb9094ba93c23aafe1b8f1, type: 3}
   m_PlayAudioClipOnSelectExited: 0
-  m_AudioClipForOnSelectExited: {fileID: 0}
+  m_AudioClipForOnSelectExited: {fileID: 8300000, guid: 307407dfb8eb9094ba93c23aafe1b8f1, type: 3}
   m_PlayAudioClipOnSelectCanceled: 0
   m_AudioClipForOnSelectCanceled: {fileID: 0}
   m_PlayAudioClipOnHoverEntered: 1
-  m_AudioClipForOnHoverEntered: {fileID: 8300000, guid: 307407dfb8eb9094ba93c23aafe1b8f1, type: 3}
+  m_AudioClipForOnHoverEntered: {fileID: 8300000, guid: b00ad4584d2c7054e98d00826aaa4399, type: 3}
   m_PlayAudioClipOnHoverExited: 0
   m_AudioClipForOnHoverExited: {fileID: 0}
   m_PlayAudioClipOnHoverCanceled: 0

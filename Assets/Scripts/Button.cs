@@ -2,29 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-public class Button : XRGrabInteractable
+public class Button : XRBaseInteractable
 {
 
     public Color hoverColor;
     public Color startColor;
 
+    private Transform top;
+    private Material[] materials;
+
     void Start(){
-        GetComponent<MeshRenderer>().material.color = startColor;    
+        top = transform.GetChild(1);
+        materials = new Material[] {GetComponent<MeshRenderer>().material, top.GetComponent<MeshRenderer>().material};
+        setColor(startColor);
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args){
-        // overwrite selection so button can not be moved.
+        base.OnSelectEntered(args);
+        top.Translate(top.right * -0.01f);
+    }
+
+    protected override void OnSelectExited(SelectExitEventArgs args){
+        base.OnSelectExited(args);
+        top.Translate(top.right * 0.01f);
     }
 
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
         base.OnHoverEntered(args);
-        GetComponent<MeshRenderer>().material.color = hoverColor;    
+        setColor(hoverColor);
     }
 
     protected override void OnHoverExited(HoverExitEventArgs args){
         base.OnHoverExited(args);
-        GetComponent<MeshRenderer>().material.color = startColor;    
+        setColor(startColor);
+    }
+
+    private void setColor(Color color){
+        foreach (var material in materials)
+        {
+            material.color = color;
+        }
     }
 
 }
