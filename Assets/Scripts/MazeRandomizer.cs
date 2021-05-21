@@ -78,49 +78,99 @@ class InRec {
     }
 }
 
-[ExecuteInEditMode]
+// [ExecuteInEditMode]
 public class MazeRandomizer : MonoBehaviour
 {
 
-    public Transform start;
-    public Transform goal;
+    public GameObject start;
+    public GameObject goal;
 
-    public int mazeNr;
-    private Vector2[] startPositions = {
-        new Vector2(1, 0), 
-        new Vector2(5, 4)
-    };
+    public AudioClip fail;
+    public AudioClip win;
+    private AudioSource audioData;
 
-    private Vector2[] goalPositions = {
-        new Vector2(0, 3), 
-        new Vector2(4, 5)
-    };
-
-    private InRec[][] solutions =
-    {
-        new InRec[] { 
-            new InRec(0, 1),    // left once
-            new InRec(3, 3),    // 3x down
-        },
-    };
+    private int mazeNr;
+    private Vector2 goalPosition;
 
     private Wall[][] walls =
     {
         new Wall[] { 
-            new Wall(new Vector2(1, 1), new bool[] {true, false, true, true}), 
-            new Wall(new Vector2(1, 3), new bool[] {true, false, false, true}), 
-            new Wall(new Vector2(1, 4), new bool[] {true, false, true, false}), 
-            new Wall(new Vector2(1, 5), new bool[] {false, false, true, true}), 
+            new Wall(new Vector2(1, 1), new bool[] {true, false, true, true}),
+            new Wall(new Vector2(1, 3), new bool[] {true, false, false, true}),
+            new Wall(new Vector2(1, 4), new bool[] {false, true, false, true}),
+            new Wall(new Vector2(1, 5), new bool[] {false, true, true, false}),
+
+            new Wall(new Vector2(2, 0), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(2, 1), new bool[] {false, true, true, false}),
+            new Wall(new Vector2(2, 3), new bool[] {false, true, false, true}),
+            new Wall(new Vector2(2, 4), new bool[] {false, false, true, true}),
+            new Wall(new Vector2(2, 5), new bool[] {false, true, false, false}),
+
+            new Wall(new Vector2(3, 2), new bool[] {true, true, false, false}),
+            new Wall(new Vector2(3, 3), new bool[] {false, true, true, true}),
+            new Wall(new Vector2(3, 4), new bool[] {false, true, false, false}),
+
+            new Wall(new Vector2(4, 1), new bool[] {true, true, false, false}),
+            new Wall(new Vector2(4, 2), new bool[] {false, true, true, true}),
+            new Wall(new Vector2(4, 4), new bool[] {false, false, true, false}),
+
+            new Wall(new Vector2(5, 3), new bool[] {false, false, true, false}),
+        },
+
+        new Wall[] { 
+            new Wall(new Vector2(0, 1), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(0, 2), new bool[] {false, true, true, false}),
+            new Wall(new Vector2(0, 3), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(0, 4), new bool[] {false, false, true, false}),
+
+            new Wall(new Vector2(1, 1), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(1, 2), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(1, 3), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(1, 4), new bool[] {false, true, true, false}),
+
+            new Wall(new Vector2(2, 1), new bool[] {true, true, false, false}),
+            new Wall(new Vector2(2, 2), new bool[] {false, true, false, false}),
+
+            new Wall(new Vector2(3, 3), new bool[] {true, true, false, false}),
+            new Wall(new Vector2(3, 4), new bool[] {false, true, true, true}),
+
+            new Wall(new Vector2(4, 1), new bool[] {true, false, true, false}),
+
+            new Wall(new Vector2(5, 2), new bool[] {true, false, false, true}),
+            new Wall(new Vector2(5, 3), new bool[] {false, false, false, true}),
+            new Wall(new Vector2(5, 4), new bool[] {false, false, false, true}),
+        },
+
+        new Wall[] { 
+            new Wall(new Vector2(0, 1), new bool[] {false, true, true, false}),
+            new Wall(new Vector2(0, 4), new bool[] {true, true, false, false}),
+
+            new Wall(new Vector2(1, 2), new bool[] {false, true, true, false}),
+            new Wall(new Vector2(1, 4), new bool[] {false, true, true, false}),
+
+            new Wall(new Vector2(2, 1), new bool[] {true, true, false, true}),
+            new Wall(new Vector2(2, 3), new bool[] {false, false, false, true}),
+            new Wall(new Vector2(2, 4), new bool[] {true, true, false, true}),
+
+            new Wall(new Vector2(3, 0), new bool[] {false, false, true, false}),
+            new Wall(new Vector2(3, 2), new bool[] {false, true, true, false}),
+            new Wall(new Vector2(3, 3), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(3, 4), new bool[] {false, true, false, false}),
+
+            new Wall(new Vector2(4, 1), new bool[] {true, true, false, false}),
+            new Wall(new Vector2(4, 2), new bool[] {false, false, true, false}),
+            new Wall(new Vector2(4, 4), new bool[] {false, true, false, false}),
+            new Wall(new Vector2(4, 5), new bool[] {false, true, false, false}),
+
+            new Wall(new Vector2(5, 2), new bool[] {false, false, true, false}),
         },
     };
 
     private Vector2 currentPosition;
 
-    private int inputCount = 0;
-
-    void Start()
-    {
-      reset();
+    void Start(){
+        audioData = GetComponent<AudioSource>();
+        reset();
     }
 
     public void inputLeft(){
@@ -137,39 +187,45 @@ public class MazeRandomizer : MonoBehaviour
     }
 
     private void input(InRec inp){
-        // print("moved " + inp.toString() + "  " + inp.toVector());
+        // check if a move leads out of bounds or through a wall
         if(!isAllowedMove(inp)){
-            print("move not allowed");
+            audioData.PlayOneShot(fail);
             reset();
             return;
         }
 
+        // move 
         currentPosition += inp.toVector();
-        start.transform.localPosition = getPosition(currentPosition);
+
+        start.SetActive(false);
 
         if(foundSolution()){
-            print("won!!");
+            audioData.PlayOneShot(win);
             reset();
         }
     }
 
     private bool foundSolution(){
-        var goalPos = goalPositions[mazeNr];
-        return currentPosition.x == goalPos.x && currentPosition.y == goalPos.y;
+        return currentPosition.x == goalPosition.x && currentPosition.y == goalPosition.y;
     }
 
     private bool isAllowedMove(InRec input){
         Vector2 nextPosition = currentPosition + input.toVector();
 
-        // print("nextPosition: " + nextPosition);
-
-        if (nextPosition.x > 6f || nextPosition.x < 0f || nextPosition.y > 6f || nextPosition.y < 0f ){
+        if (nextPosition.x > 5f || nextPosition.x < 0f || nextPosition.y > 5f || nextPosition.y < 0f ){
             return false;
         }
 
         // check for walls
         Wall blockingWall = Array.Find(walls[mazeNr], element => element.blocks(currentPosition, nextPosition, input));
         return blockingWall == null;
+    }
+
+    private Vector3 getRandomPosition(out Vector2 position){
+        int x = UnityEngine.Random.Range(0, 6);
+        int y = UnityEngine.Random.Range(0, 6);
+        position = new Vector2(x, y);
+        return getPosition(position);
     }
 
     private Vector3 getPosition(Vector2 position){
@@ -189,18 +245,17 @@ public class MazeRandomizer : MonoBehaviour
         float baseOffset = 0.001f;
         float tileOffset = 1f / 3f;
 
-        mazeNr = 0; // Random.Range(0, 10);
+        mazeNr = UnityEngine.Random.Range(0, 3);
 
         int randomX = mazeNr / 3;
         int randomY = mazeNr % 3;
         mat.mainTextureOffset = new Vector2(baseOffset + randomX * tileOffset, baseOffset + randomY * tileOffset);
 
-
         // set start and goal position
-        start.transform.localPosition = getPosition(startPositions[mazeNr]);
-        goal.transform.localPosition = getPosition(goalPositions[mazeNr]);
-        currentPosition = startPositions[mazeNr];
-        inputCount = 0;
+        start.transform.localPosition = getRandomPosition(out currentPosition);
+        goal.transform.localPosition = getRandomPosition(out goalPosition);
+
+        start.SetActive(true);
     }
 
 }
