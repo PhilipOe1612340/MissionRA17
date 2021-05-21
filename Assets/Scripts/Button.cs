@@ -19,12 +19,12 @@ public class Button : XRBaseInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args){
         base.OnSelectEntered(args);
-        top.Translate(top.right * -0.01f);
+        top.Translate(top.up * -0.01f, top.transform);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args){
         base.OnSelectExited(args);
-        top.Translate(top.right * 0.01f);
+        top.Translate(top.up * 0.01f, top.transform);
     }
 
     protected override void OnHoverEntered(HoverEnterEventArgs args)
