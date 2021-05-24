@@ -9,12 +9,11 @@ public class SceneLoader : Singleton<SceneLoader>
     public UnityEvent OnLoadBegin = new UnityEvent();
     public UnityEvent OnLoadEnd = new UnityEvent();
 
-    // public ScreenFader screenFader = null;
+    public Transform XR_Rig; 
 
     private bool isLoading = false;
 
     private void Awake(){
-        Debug.Log("Awake");
         SceneManager.sceneLoaded += SetActiveScene;
     }
 
@@ -25,7 +24,6 @@ public class SceneLoader : Singleton<SceneLoader>
 
     public void LoadNewScene(string sceneName)
     {
-        print("requested: " + sceneName);
         if(!isLoading){
             StartCoroutine(LoadScene(sceneName));
         }
@@ -63,9 +61,12 @@ public class SceneLoader : Singleton<SceneLoader>
 
     private void SetActiveScene(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("scene loaded");
         SceneManager.SetActiveScene(scene);
-        Debug.Log("active: " + SceneManager.GetActiveScene().name);
+
+        var pos = GameObject.FindWithTag("Respawn");
+        if(pos != null){
+            XR_Rig.position = pos.transform.position;
+        }
     }
 
 }
