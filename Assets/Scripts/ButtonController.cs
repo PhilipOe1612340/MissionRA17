@@ -1,42 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ButtonController : MonoBehaviour
 {
-
     public Transform lightRef;
     public GameObject sparksObj;
 
     public AudioClip fail;
     public AudioClip win;
 
+    public UnityEvent OnGameComplete = new UnityEvent();
+
     private Material lightMaterial;
     private int level = 1;
     private int inpIdx = 0;
-    private int[] solution = new int[12];
+    private int[] solution = new int[3];
     private int[] input;
     private bool finished = false;
 
     private IEnumerator coroutine;
     private IEnumerator resetAfter;
+    private IEnumerator initRoutine;
     private bool beeingReset = false;
 
     private AudioSource audioData;
     private ParticleSystem sparks;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         lightMaterial = lightRef.GetComponent<MeshRenderer>().material;
         SetColor(Color.black);
         GenerateSolution();
-        StartDisplaySolutionCoroutine();
         
         audioData = GetComponent<AudioSource>();
 
         sparks = sparksObj.GetComponent<ParticleSystem>();
+
+        initRoutine = initLoop();
+        StartCoroutine(initRoutine);
     }
 
     public void RedButtonPressed(){
@@ -57,10 +60,20 @@ public class ButtonController : MonoBehaviour
             return;
         }
 
-        StopCoroutine(coroutine);
+        if(coroutine != null){
+            StopCoroutine(coroutine);
+        }
+
+        if(initRoutine != null){
+            StopCoroutine(initRoutine);
+            initRoutine = null;
+        }
+
         if(resetAfter != null){
             StopCoroutine(resetAfter);
         }
+        
+        StopAllCoroutines();
         
         if(input == null){
             resetInput();
@@ -86,6 +99,7 @@ public class ButtonController : MonoBehaviour
             // puzzle solved
             if(level == solution.Length + 1){
                 finished = true;
+                OnGameComplete.Invoke();
                 audioData.PlayOneShot(win);
                 return;
             }
@@ -155,19 +169,27 @@ public class ButtonController : MonoBehaviour
 
     private IEnumerator ShowSolutionRoutine(float onTime, float delay)
     {
-
         // wait for reset
         while(beeingReset)       
             yield return new WaitForSeconds(0.1f);
 
         SetColor(Color.black);
         yield return new WaitForSeconds(onTime * 2);
-        for (int i = 0; i < level; i++)
+        for (int i = 0; i < level && i < solution.Length; i++)
         {
             SetColor(lookUpColor(solution[i]));
             yield return new WaitForSeconds(onTime);
             SetColor(Color.black);
             yield return new WaitForSeconds(delay);
+        }
+    }
+
+    private IEnumerator initLoop(){
+        while(true){
+            SetColor(lookUpColor(solution[0]));
+            yield return new WaitForSeconds(0.8f);
+            SetColor(Color.black);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 

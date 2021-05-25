@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 class Wall{
@@ -78,9 +79,9 @@ class InRec {
     }
 }
 
-// [ExecuteInEditMode]
 public class MazeRandomizer : MonoBehaviour
 {
+    public UnityEvent OnGameComplete = new UnityEvent();
 
     public GameObject start;
     public GameObject goal;
@@ -89,7 +90,10 @@ public class MazeRandomizer : MonoBehaviour
     public AudioClip win;
     private AudioSource audioData;
 
+
+    private bool active = false;
     private int mazeNr;
+    private int completed = 0;
     private Vector2 goalPosition;
 
     private Wall[][] walls =
@@ -171,6 +175,14 @@ public class MazeRandomizer : MonoBehaviour
     void Start(){
         audioData = GetComponent<AudioSource>();
         reset();
+        start.SetActive(false);
+        goal.SetActive(false);
+    }
+
+    public void ActivateInput(){
+        active = true;
+        start.SetActive(true);
+        goal.SetActive(true);
     }
 
     public void inputLeft(){
@@ -187,6 +199,10 @@ public class MazeRandomizer : MonoBehaviour
     }
 
     private void input(InRec inp){
+        if(!active){
+            return;
+        }
+
         // check if a move leads out of bounds or through a wall
         if(!isAllowedMove(inp)){
             audioData.PlayOneShot(fail);
@@ -202,6 +218,9 @@ public class MazeRandomizer : MonoBehaviour
         if(foundSolution()){
             audioData.PlayOneShot(win);
             reset();
+            if((completed++) == 3){
+                OnGameComplete.Invoke();
+            }
         }
     }
 
@@ -239,12 +258,12 @@ public class MazeRandomizer : MonoBehaviour
     }
 
     private void reset(){
-        // choose random texture
-
+        // get texture
         var mat = GetComponent<MeshRenderer>().material;
         float baseOffset = 0.001f;
         float tileOffset = 1f / 3f;
 
+        // choose random maze
         mazeNr = UnityEngine.Random.Range(0, 3);
 
         int randomX = mazeNr / 3;
