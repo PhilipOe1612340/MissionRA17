@@ -10,8 +10,12 @@ public class TeleportationDoorSceneSwitch : MonoBehaviour
     public AudioClip fail;
     public AudioClip teleport;
 
+    // public GameObject
+
     private AudioSource audioData;
     // private TeleportationAnchor anchor;
+
+    
 
     void Start(){
         audioData = GetComponent<AudioSource>();

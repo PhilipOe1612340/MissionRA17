@@ -16,7 +16,7 @@ public class ButtonController : MonoBehaviour
     private Material lightMaterial;
     private int level = 1;
     private int inpIdx = 0;
-    private int[] solution = new int[3];
+    private int[] solution = new int[8];
     private int[] input;
     private bool finished = false;
 
