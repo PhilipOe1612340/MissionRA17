@@ -9,22 +9,24 @@ public class Button : XRBaseInteractable
     public Color startColor;
 
     private Transform top;
+    private Transform stem;
     private Material[] materials;
 
     void Start(){
         top = transform.GetChild(1);
-        materials = new Material[] {GetComponent<MeshRenderer>().material, top.GetComponent<MeshRenderer>().material};
+        stem = transform.GetChild(2);
+        materials = new Material[] {top.GetComponent<MeshRenderer>().material, stem.GetComponent<MeshRenderer>().material};
         setColor(startColor);
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args){
         base.OnSelectEntered(args);
-        top.Translate(top.up * -0.01f, top.transform);
+        top.transform.position -= transform.forward * 0.01f;
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args){
         base.OnSelectExited(args);
-        top.Translate(top.up * 0.01f, top.transform);
+        top.transform.position += transform.forward * 0.01f;
     }
 
     protected override void OnHoverEntered(HoverEnterEventArgs args)

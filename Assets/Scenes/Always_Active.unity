@@ -372,6 +372,14 @@ PrefabInstance:
       propertyPath: m_ModelPrefab
       value: 
       objectReference: {fileID: 8249230696956201412, guid: eb778dafc62c34d42ba231befaedfcdf, type: 3}
+    - target: {fileID: 1912263766013780919, guid: 036a73977ae146148ad7b6e1be6e4a72, type: 3}
+      propertyPath: m_PlayAudioClipOnHoverEntered
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912263766013780919, guid: 036a73977ae146148ad7b6e1be6e4a72, type: 3}
+      propertyPath: m_PlayAudioClipOnSelectEntered
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2092778884565733231, guid: 036a73977ae146148ad7b6e1be6e4a72, type: 3}
       propertyPath: m_ModelPrefab
       value: 
