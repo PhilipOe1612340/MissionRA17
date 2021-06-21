@@ -10,16 +10,19 @@ public class TeleportationDoorSceneSwitch : MonoBehaviour
     public AudioClip fail;
     public AudioClip teleport;
 
-    // public GameObject
-
     private AudioSource audioData;
-    // private TeleportationAnchor anchor;
+    private GameObject anchor;
 
-    
+    private int teleportLayer = 6;
+
+    void Awake(){
+        anchor = transform.GetChild(0).gameObject;
+    }
 
     void Start(){
         audioData = GetComponent<AudioSource>();
-        // anchor = this.gameObject.transform.GetChild(0).GetComponent<TeleportationAnchor>();
+
+        anchor.layer = active ? teleportLayer : 0;
     }
 
     public void SwitchToTargetScene(){
@@ -32,6 +35,8 @@ public class TeleportationDoorSceneSwitch : MonoBehaviour
     public void setState(bool state){
         active = state;
         playAudio();
+
+        anchor.layer = state ? teleportLayer : 0;
     }
 
     private void playAudio(){
