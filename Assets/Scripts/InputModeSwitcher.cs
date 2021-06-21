@@ -12,7 +12,6 @@ public class TeleportationEnabler : MonoBehaviour
 
     public UnityEvent onTeleportActive;
     public UnityEvent onTeleportCancel;
-    public UnityEvent onSceneSwitch;
 
     void Start()
     {

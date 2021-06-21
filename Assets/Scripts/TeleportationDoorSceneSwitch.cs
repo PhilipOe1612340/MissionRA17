@@ -8,7 +8,6 @@ public class TeleportationDoorSceneSwitch : MonoBehaviour
     public string target;
 
     public AudioClip fail;
-    public AudioClip teleport;
 
     private AudioSource audioData;
     private GameObject anchor;
@@ -21,29 +20,20 @@ public class TeleportationDoorSceneSwitch : MonoBehaviour
 
     void Start(){
         audioData = GetComponent<AudioSource>();
-
         anchor.layer = active ? teleportLayer : 0;
     }
 
     public void SwitchToTargetScene(){
-        playAudio();
-        if(active){
+        if(active) {
             SceneLoader.Instance.LoadNewScene(target);
+        } else {
+            audioData.PlayOneShot(fail);
         }
     }
 
     public void setState(bool state){
         active = state;
-        playAudio();
-
         anchor.layer = state ? teleportLayer : 0;
     }
 
-    private void playAudio(){
-         if(active){
-            audioData.PlayOneShot(teleport);
-        } else {
-            audioData.PlayOneShot(fail);
-        }
-    }
 }
