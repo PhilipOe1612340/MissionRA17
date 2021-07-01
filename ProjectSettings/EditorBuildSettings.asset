@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Always_Active.unity
     guid: b921d1e24877cea4191a50fd46bb8fe7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Navigation.unity
     guid: 0cb6f484a52fb704eb5fd7324de8a08a
   - enabled: 1
@@ -21,6 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Storage.unity
     guid: 6e5e85b4031925c4882b504d2a934619
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c41578bd88f6968409131840b8904ac2, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4b2375fa851ba4043a3bbcbceb0b4ad0, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2b614c883e63ccf458c37a9921f18223, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: daf665a3d8b379e46b39d9db701310bd, type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: f828e670d91c37846aae85f5c55b0aeb, type: 2}
