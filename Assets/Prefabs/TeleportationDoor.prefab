@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2523292973251648915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -231,7 +231,6 @@ MonoBehaviour:
   active: 1
   target: Engine
   fail: {fileID: 8300000, guid: dbe78b045c2987a458acb451e0b9afdb, type: 3}
-  teleport: {fileID: 8300000, guid: abc0d78eb39ddc7429a7042b7ce83d87, type: 3}
 --- !u!82 &1728934253285443745
 AudioSource:
   m_ObjectHideFlags: 0
