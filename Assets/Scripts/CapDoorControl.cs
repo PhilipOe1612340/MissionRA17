@@ -17,7 +17,6 @@ public class CapDoorControl : MonoBehaviour
     private bool requiresStartAngle = true;
     private bool shouldGetHandRotation = false;
 
-    private XRSimpleInteractable simpleInteractor => GetComponent<XRSimpleInteractable>();
 
     public HingeJoint doorHinge;
     private JointLimits limits;
@@ -48,9 +47,10 @@ public class CapDoorControl : MonoBehaviour
     }
 
     public void GrabbedBy(SelectEnterEventArgs arg0)
-    {       
+    {
         //Debug.Log("we go here2");
-        interactor = Handle.GetComponent<XRSimpleInteractable>().selectingInteractor;
+        //interactor = Handle.GetComponent<XRSimpleInteractable>().selectingInteractor;
+        interactor = Handle.GetComponent<XRGrabInteractable>().selectingInteractor;
         interactor.GetComponent<XRDirectInteractor>().hideControllerOnSelect = true;
         
         shouldGetHandRotation = true;        
@@ -133,18 +133,18 @@ public class CapDoorControl : MonoBehaviour
                     {
                         if (startAngle < currentAngle)
                         {
-                            if (totalAngle + snapRotationAmount <= 360)
+                            if (totalAngle + snapRotationAmount >=0 )
                             {
-                                RotateOutClockwise();
+                                RotateOutAntiClockwise();
                                 startAngle = currentAngle;
                             }
                             else { return; }
                         }
                         else if (startAngle > currentAngle)
                         {
-                            if (totalAngle - snapRotationAmount >= 0) 
+                            if (totalAngle - snapRotationAmount <= 360) 
                             {
-                                RotateOutAntiClockwise();
+                                RotateOutClockwise();
                                 startAngle = currentAngle;
                             }
                             else { return; }
@@ -155,18 +155,18 @@ public class CapDoorControl : MonoBehaviour
                 {
                     if (startAngle < currentAngle)
                     {
-                        if (totalAngle - snapRotationAmount >= 0)
+                        if (totalAngle + snapRotationAmount <=360)
                         {
-                            RotateOutAntiClockwise();
+                            RotateOutClockwise();
                             startAngle = currentAngle;
                         }
                         else { return; }
                     }
                     else if (startAngle > currentAngle)
                     {
-                        if (totalAngle + snapRotationAmount <= 360)
+                        if (totalAngle - snapRotationAmount >=0)
                         {
-                            RotateOutClockwise();
+                            RotateOutAntiClockwise();
                             startAngle = currentAngle;
                         }
                         else { return; }
