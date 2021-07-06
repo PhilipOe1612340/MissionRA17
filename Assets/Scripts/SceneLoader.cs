@@ -13,6 +13,13 @@ public class SceneLoader : Singleton<SceneLoader>
 
     private bool isLoading = false;
 
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void OnBeforeSceneLoadRuntimeMethod()
+    {
+        PlayerPrefs.SetInt("LightLevel", (int)LightLevel.low);
+    }
+
     private void Awake(){
         SceneManager.sceneLoaded += SetActiveScene;
     }
