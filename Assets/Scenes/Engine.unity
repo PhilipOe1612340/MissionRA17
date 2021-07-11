@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.16862746, g: 0.29411766, b: 0.3764706, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 6a9631bbdbc611244a25f1c36e1f519c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_Sun: {fileID: 1640331733}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 9d5ae193287f6ec4ab10c9deaa9384bc, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 1f9eea0df7b3793458845f2e1e66832d, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -840,7 +840,7 @@ Transform:
   - {fileID: 1580584896}
   - {fileID: 789914598}
   m_Father: {fileID: 1384757489}
-  m_RootOrder: 23
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &108987527
 PrefabInstance:
@@ -1815,7 +1815,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1384757489}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -17.485, y: -133.735, z: 56.886}
 --- !u!199 &289425365
 ParticleSystemRenderer:
@@ -8197,7 +8197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1384757489}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -57.553, y: -281.016, z: 97.489}
 --- !u!199 &717764500
 ParticleSystemRenderer:
@@ -14495,7 +14495,7 @@ Transform:
   - {fileID: 1976907928}
   - {fileID: 2005380398}
   m_Father: {fileID: 1384757489}
-  m_RootOrder: 36
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1084191929
 PrefabInstance:
@@ -16830,15 +16830,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1233713451}
+  - {fileID: 717764499}
+  - {fileID: 289425364}
+  - {fileID: 88020360}
+  - {fileID: 1058741292}
   - {fileID: 1792355222}
   - {fileID: 1014555489}
   - {fileID: 2136135606}
   - {fileID: 1562580362}
   - {fileID: 1241682140}
   - {fileID: 447750168}
-  - {fileID: 717764499}
   - {fileID: 1630563618}
-  - {fileID: 289425364}
   - {fileID: 411390669}
   - {fileID: 108987528}
   - {fileID: 725139040}
@@ -16852,7 +16854,6 @@ Transform:
   - {fileID: 1322417206}
   - {fileID: 2132039088}
   - {fileID: 1289594925}
-  - {fileID: 88020360}
   - {fileID: 533382107}
   - {fileID: 1436708704}
   - {fileID: 1649995347}
@@ -16865,7 +16866,6 @@ Transform:
   - {fileID: 422581313}
   - {fileID: 1573954475}
   - {fileID: 769670119}
-  - {fileID: 1058741292}
   - {fileID: 14733007}
   - {fileID: 1613223234}
   - {fileID: 26772850}

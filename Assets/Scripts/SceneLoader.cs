@@ -64,6 +64,8 @@ public class SceneLoader : Singleton<SceneLoader>
         while(!loadOperation.isDone){
     		yield return null;
         }
+
+        LightProbes.TetrahedralizeAsync();
     }
 
     private void SetActiveScene(Scene scene, LoadSceneMode mode)
@@ -73,6 +75,7 @@ public class SceneLoader : Singleton<SceneLoader>
         var pos = GameObject.FindWithTag("Respawn");
         if(pos != null){
             XR_Rig.position = pos.transform.position;
+            XR_Rig.eulerAngles = pos.transform.eulerAngles;
         }
     }
 
