@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public enum LightLevel{
     low = 1, 
-    medium = 4,
-    high = 12,
-    intense = 24
+    medium = 2,
+    high = 3,
+    intense = 4
 }
 
 public class GameState : MonoBehaviour
