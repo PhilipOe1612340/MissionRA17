@@ -13,6 +13,13 @@ public class SceneLoader : Singleton<SceneLoader>
 
     private bool isLoading = false;
 
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void OnBeforeSceneLoadRuntimeMethod()
+    {
+        PlayerPrefs.SetInt("LightLevel", (int)LightLevel.low);
+    }
+
     private void Awake(){
         SceneManager.sceneLoaded += SetActiveScene;
     }
@@ -57,6 +64,8 @@ public class SceneLoader : Singleton<SceneLoader>
         while(!loadOperation.isDone){
     		yield return null;
         }
+
+        LightProbes.TetrahedralizeAsync();
     }
 
     private void SetActiveScene(Scene scene, LoadSceneMode mode)
@@ -66,6 +75,7 @@ public class SceneLoader : Singleton<SceneLoader>
         var pos = GameObject.FindWithTag("Respawn");
         if(pos != null){
             XR_Rig.position = pos.transform.position;
+            XR_Rig.eulerAngles = pos.transform.eulerAngles;
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.Events;
 
 public class CapDoorControl : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class CapDoorControl : MonoBehaviour
     private bool shouldGetHandRotation = false;
 
 
-    public HingeJoint doorHinge;
+    private HingeJoint doorHinge;
     private JointLimits limits;
     bool isLocked;
     
@@ -27,16 +28,23 @@ public class CapDoorControl : MonoBehaviour
     public AudioClip lockDoor;
     private AudioSource audioData;
 
+    public UnityEvent OnGameComplete = new UnityEvent();
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+
+        doorHinge = GetComponent<HingeJoint>();
+        limits = doorHinge.limits;
         ToggleHinge(0);
         isLocked = true;
         
         totalAngle = 0;
         audioData = GetComponent<AudioSource>();
+
+
     }
 
     #region Handlegrab
@@ -96,6 +104,7 @@ public class CapDoorControl : MonoBehaviour
         ToggleHinge(0);
         //Debug.Log("door locked");
         audioData.PlayOneShot(lockDoor);
+        OnGameComplete.Invoke();
     }
 
     private void UnlockDoor()

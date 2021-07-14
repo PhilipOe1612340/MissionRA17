@@ -28,24 +28,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   mode:
-    overrideState: 0
+    overrideState: 1
     value: 0
   color:
-    overrideState: 0
+    overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
   center:
-    overrideState: 0
+    overrideState: 1
     value: {x: 0.5, y: 0.5}
   intensity:
-    overrideState: 0
-    value: 0.23
+    overrideState: 1
+    value: 0.402
   smoothness:
-    overrideState: 0
+    overrideState: 1
     value: 0.2
   roundness:
     overrideState: 0
@@ -162,64 +162,64 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -11.2
+    value: -41
   tint:
     overrideState: 1
-    value: -20.7
+    value: -81
   colorFilter:
     overrideState: 0
     value: {r: 1, g: 0.9758634, b: 0.65471697, a: 1}
   hueShift:
     overrideState: 1
-    value: 0
+    value: -0
   saturation:
     overrideState: 1
-    value: 9.5
+    value: 15
   brightness:
     overrideState: 0
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.75
+    value: 0.02
   contrast:
     overrideState: 1
-    value: 40.2
+    value: 22
   mixerRedOutRedIn:
-    overrideState: 0
-    value: 100
+    overrideState: 1
+    value: 121
   mixerRedOutGreenIn:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 58
   mixerRedOutBlueIn:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -16
   mixerGreenOutRedIn:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 22
   mixerGreenOutGreenIn:
-    overrideState: 0
-    value: 100
+    overrideState: 1
+    value: 94
   mixerGreenOutBlueIn:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 28
   mixerBlueOutRedIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerBlueOutGreenIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerBlueOutBlueIn:
-    overrideState: 0
-    value: 100
+    overrideState: 1
+    value: 120
   lift:
     overrideState: 1
-    value: {x: 0.86382043, y: 1, z: 0.99153626, w: -0.009862961}
+    value: {x: 0.85541844, y: 0.84510136, z: 1, w: -0.09729735}
   gamma:
     overrideState: 1
-    value: {x: 0.94275594, y: 0.8842988, z: 1, w: -0.21435893}
+    value: {x: 1, y: 0.92948085, z: 0.8473868, w: -0.21621622}
   gain:
     overrideState: 1
-    value: {x: 1, y: 0.78040403, z: 0.89236355, w: -0.011402507}
+    value: {x: 0.93593264, y: 1, z: 0.96582544, w: 0.061776064}
   masterCurve:
     overrideState: 0
     value:
@@ -857,11 +857,29 @@ MonoBehaviour:
       - 0.984375
       - 0.9921875
   hueVsHueCurve:
-    overrideState: 0
+    overrideState: 1
     value:
       curve:
         serializedVersion: 2
-        m_Curve: []
+        m_Curve:
+        - serializedVersion: 3
+          time: 0.53221536
+          value: 0.48847926
+          inSlope: -0.39158964
+          outSlope: -0.39158964
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.81244487
+          value: 0.44700462
+          inSlope: 0.14917704
+          outSlope: 0.14917704
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -869,134 +887,134 @@ MonoBehaviour:
       m_ZeroValue: 0.5
       m_Range: 1
       cachedData:
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
+      - 0.4834338
+      - 0.48511204
+      - 0.486786
+      - 0.48845375
+      - 0.49011326
+      - 0.49176258
+      - 0.49339974
+      - 0.49502277
+      - 0.4966297
+      - 0.4982185
+      - 0.49978727
+      - 0.501334
+      - 0.5028567
+      - 0.5043534
+      - 0.5058222
+      - 0.507261
+      - 0.5086679
+      - 0.5100409
+      - 0.511378
+      - 0.5126773
+      - 0.5139368
+      - 0.5151545
+      - 0.51632845
+      - 0.5174566
+      - 0.5185371
+      - 0.51956785
+      - 0.520547
+      - 0.52147245
+      - 0.5223423
+      - 0.52315456
+      - 0.5239073
+      - 0.5245984
+      - 0.52522606
+      - 0.5257882
+      - 0.5262829
+      - 0.5267081
+      - 0.52706194
+      - 0.5273424
+      - 0.5275474
+      - 0.52767515
+      - 0.52772355
+      - 0.52769065
+      - 0.5275745
+      - 0.5273731
+      - 0.52708447
+      - 0.52670664
+      - 0.5262376
+      - 0.5256755
+      - 0.5250182
+      - 0.52426386
+      - 0.52341044
+      - 0.522456
+      - 0.5213985
+      - 0.520236
+      - 0.51896656
+      - 0.51758814
+      - 0.51609886
+      - 0.5144966
+      - 0.51277953
+      - 0.5109456
+      - 0.50899285
+      - 0.5069193
+      - 0.504723
+      - 0.5024019
+      - 0.4999541
+      - 0.49737763
+      - 0.49467048
+      - 0.49183068
+      - 0.48885623
+      - 0.48582998
+      - 0.48288655
+      - 0.48002952
+      - 0.4772609
+      - 0.47458258
+      - 0.47199658
+      - 0.46950477
+      - 0.4671092
+      - 0.46481174
+      - 0.4626144
+      - 0.46051908
+      - 0.45852777
+      - 0.45664242
+      - 0.45486495
+      - 0.45319736
+      - 0.45164156
+      - 0.45019954
+      - 0.44887325
+      - 0.44766462
+      - 0.44657558
+      - 0.44560814
+      - 0.44476423
+      - 0.44404578
+      - 0.44345474
+      - 0.44299313
+      - 0.44266284
+      - 0.4424658
+      - 0.44240406
+      - 0.4424795
+      - 0.44269404
+      - 0.4430497
+      - 0.44354844
+      - 0.44419214
+      - 0.44498283
+      - 0.4459224
+      - 0.44701284
+      - 0.44820082
+      - 0.44943196
+      - 0.45070428
+      - 0.45201576
+      - 0.45336446
+      - 0.4547484
+      - 0.4561656
+      - 0.45761412
+      - 0.45909193
+      - 0.4605971
+      - 0.4621276
+      - 0.46368152
+      - 0.46525684
+      - 0.4668516
+      - 0.4684638
+      - 0.47009152
+      - 0.47173277
+      - 0.4733855
+      - 0.47504786
+      - 0.47671777
+      - 0.4783933
+      - 0.48007247
+      - 0.4817533
   hueVsSatCurve:
     overrideState: 0
     value:
