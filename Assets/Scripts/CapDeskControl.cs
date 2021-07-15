@@ -25,9 +25,12 @@ public class CapDeskControl : MonoBehaviour
     public AudioClip clamp;
     public AudioClip clamp2;
     public AudioClip clamp3;
-    public AudioClip engineSound; 
-    
+    public AudioClip engineSound;
+    public AudioClip joana_end;
+    public AudioClip joana_start;
+
     private AudioSource audioData;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,15 +45,15 @@ public class CapDeskControl : MonoBehaviour
     {
         if (deskActive)
         {
-           
+
             if (leverHinge.angle <= 10)
-            {               
+            {
                 //deactivate ALL buttons and reset lever
                 deactivateEverything();
 
 
             }
-            
+
             if (button1 && button2 && button3)
             {
                 activatefinalButton();
@@ -63,13 +66,13 @@ public class CapDeskControl : MonoBehaviour
             {
                 deskActive = true;
                 SetColor(leverLightMaterial, Color.green);
-                
+
                 audioData.PlayOneShot(deskActivation);
                 activateButtons();
             }
 
         }
-        
+
     }
     void deactivateEverything()
     {
@@ -110,15 +113,15 @@ public class CapDeskControl : MonoBehaviour
 
     public void FirstButtonPressed()
     {
-        button1 = ToggleState(button1,buttons[0],clamp);
+        button1 = ToggleState(button1, buttons[0], clamp);
     }
     public void SecondButtonPressed()
-    { 
-        button2 = ToggleState(button2,buttons[1],clamp2);
+    {
+        button2 = ToggleState(button2, buttons[1], clamp2);
     }
     public void ThirdButtonPressed()
     {
-        button3 = ToggleState(button3,buttons[2],clamp3);
+        button3 = ToggleState(button3, buttons[2], clamp3);
     }
 
 
@@ -126,7 +129,7 @@ public class CapDeskControl : MonoBehaviour
     {
         if (buttonsActive)
         {
-            
+
             buttonMaterial = button.transform.GetComponent<MeshRenderer>().material;
             if (state)
             {
@@ -136,11 +139,11 @@ public class CapDeskControl : MonoBehaviour
             else
             {
                 SetColor(buttonMaterial, Color.green);
-                
+
                 state = true;
                 audioData.PlayOneShot(clip);
             }
-   
+
         }
         return state;
     }
@@ -153,20 +156,28 @@ public class CapDeskControl : MonoBehaviour
 
     public void finalButtonpressed()
     {
-        
+
         if (button1 && button2 && button3)
         {
             buttonMaterial = finalButton.transform.GetComponent<MeshRenderer>().material;
             SetColor(buttonMaterial, Color.green);
 
-            //Countdown?
-            audioData.clip = engineSound;
-            audioData.loop = true;
-            audioData.Play();
+            StartCoroutine(JoanaEnd());
 
             // final -> some kinda Endscreen?
 
         }
+    }
+
+    IEnumerator JoanaEnd()
+    {
+
+        audioData.PlayOneShot(joana_end);
+        yield return new WaitForSeconds(25.0f);
+        audioData.clip = engineSound;
+        audioData.loop = true;
+        audioData.Play();
+
     }
     private void SetColor(Material mat, Color color)
     {
