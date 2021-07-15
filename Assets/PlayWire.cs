@@ -32,7 +32,7 @@ public class PlayWire : MonoBehaviour
     private void createTool()
     {
         //Instatntiate new tool for playing
-        tool = Instantiate(tool, new Vector3(-14,0,4), Quaternion.identity); //adjust postion for game
+        tool = Instantiate(tool, new Vector3(6.266f,-1.242f,0.903f), Quaternion.identity); //adjust postion for game
         //enable grabbing for CubeClone
         grab = tool.GetComponent<OffsetGrab>();
         grab.enabled = true;
