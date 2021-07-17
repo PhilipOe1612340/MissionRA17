@@ -32,23 +32,45 @@ public class PlayWire : MonoBehaviour
     private void createTool()
     {
         //Instatntiate new tool for playing
-        tool = Instantiate(tool, new Vector3(-18,0.6f,1), Quaternion.identity); //adjust postion for game
+        tool = Instantiate(tool, new Vector3(6.266f,-1.242f,0.903f), Quaternion.identity); //adjust postion for game
         //enable grabbing for CubeClone
         grab = tool.GetComponent<OffsetGrab>();
         grab.enabled = true;
     }
     
+    
+
+    
     void OnCollisionEnter(Collision collisionInfo)
     {
         Debug.Log("collide");
         //check collision of GameObjects with Wire
-        if (collisionInfo.gameObject == wire)
+        
+            //enable collision
+            activateCollision = true;
+            
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        //Controller <-> cube
+         Debug.Log("craaaaaash");
+         if (other.tag == "game")
         {
-            Debug.Log("Collision succeded");
+            Debug.Log("more crash");
             //enable collision
             activateCollision = true;
             
         }
     }
+
+/*
+    void OnTriggerStay(Collider other)
+    {
+        Debug.Log("booooom");
+    }*/
+
+   
 
 }

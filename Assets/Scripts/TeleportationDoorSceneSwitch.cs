@@ -8,6 +8,7 @@ public class TeleportationDoorSceneSwitch : MonoBehaviour
     public string target;
 
     public AudioClip fail;
+    public LightLevel setLightLevelTo;
 
     private AudioSource audioData;
     private GameObject anchor;
@@ -29,6 +30,7 @@ public class TeleportationDoorSceneSwitch : MonoBehaviour
         } else {
             audioData.PlayOneShot(fail);
         }
+        GameState.setLightLevel(setLightLevelTo);
     }
 
     public void setState(bool state){

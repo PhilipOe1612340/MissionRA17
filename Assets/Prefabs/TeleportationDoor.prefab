@@ -231,6 +231,7 @@ MonoBehaviour:
   active: 1
   target: Engine
   fail: {fileID: 8300000, guid: dbe78b045c2987a458acb451e0b9afdb, type: 3}
+  setLightLevelTo: 1
 --- !u!82 &1728934253285443745
 AudioSource:
   m_ObjectHideFlags: 0
